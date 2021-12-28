@@ -1,0 +1,8 @@
+crayfish.164500.xyz  {
+    root * /flarum/public
+    php_fastcgi  flarum:9000
+    log {
+       level debug
+    }
+    file_server
+}
