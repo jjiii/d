@@ -1,0 +1,7 @@
+jekyll.164500.xyz  {
+    root * /srv/jekyll/_site
+    log {
+       level info
+    }
+    file_server
+}
