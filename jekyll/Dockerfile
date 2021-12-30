@@ -1,9 +1,18 @@
 FROM jekyll/jekyll:latest
 
-RUM jekyll new . ; \
-
-apk --no-cache add  caddy; \
+RUN apk add  caddy; \
 mkdir -p  /etc/caddy;  \
-wget -O /etc/caddy/Caddyfile "https://github.com/caddyserver/dist/raw/56302336e0bb7c8c5dff34cbcb1d833791478226/config/Caddyfile"; \
+wget -O /etc/caddy/Caddyfile "https://github.com/jjiii/dockerfile/blob/main/jekyll/Caddyfile"; \
+jekyll new . ; \
+jekyll build; 
 
-caddy run --config /etc/caddy/Caddyfile; \
+WORKDIR /srv/jekyll
+RUN echo -e "caddy run --config /etc/caddy/Caddyfile" > ./run.sh && cat /srv/jekyll/run.sh 
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 2019
+CMD ["/bin/sh","./run.sh"]
+
+
+
