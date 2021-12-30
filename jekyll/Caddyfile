@@ -1,4 +1,4 @@
-jekyll.164500.xyz  {
+:80  {
     root * /srv/jekyll/_site
     log {
        level info
