@@ -1,7 +1,4 @@
 :80  {
     root * /srv/jekyll/_site
-    log {
-       level info
-    }
     file_server
 }
