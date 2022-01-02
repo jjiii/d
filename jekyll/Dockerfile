@@ -4,11 +4,11 @@ ENV CADDY_HOME /usr/bin/caddy
 ENV PATH $CADDY_HOME:$PATH
 
 RUN mkdir -p  /etc/caddy /srv/web; \
-wget -O /etc/caddy/Caddyfile "https://github.com/jjiii/dockerfile/blob/d0aa1eeb1d201909a46cf2eb14dc5c0d173dfa6d/jekyll/Caddyfile"; \
+chown -R  jekyll:jekyll /srv/web; \
+wget -O /etc/caddy/Caddyfile "https://github.com/jjiii/dockerfile/blob/d0aa1eeb1d201909a46cf2eb14dc5c0d173dfa6d/jekyll/Caddyfile"
 
 #RUN chown -R  jekyll:jekyll /usr/local; \
 #chown -R  jekyll:jekyll /usr/gem; \
-RUN chown -R  jekyll:jekyll /srv/web
 
 WORKDIR /srv/web
 RUN jekyll new .
@@ -30,4 +30,3 @@ ENTRYPOINT ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
 #没括号是以shell模式运行(可使用环境变量)，推荐使用exec模式
 #CMD /script.sh
 #CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
-
