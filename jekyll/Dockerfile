@@ -4,7 +4,7 @@ ENV CADDY_HOME /usr/bin/caddy
 ENV PATH $CADDY_HOME:$PATH
 
 RUN mkdir -p  /etc/caddy /srv/web; \
-echo -e ":80 \\nroot * /srv/web/_site\nfile_server \n}" > /etc/caddy/Caddyfile
+wget -O /etc/caddy/Caddyfile "https://github.com/jjiii/dockerfile/blob/1dced611dd3cf37232dbae43366b9c919c03e29a/jekyll/Caddyfile"; \
 
 #RUN chown -R  jekyll:jekyll /usr/local; \
 #chown -R  jekyll:jekyll /usr/gem; \
@@ -21,6 +21,7 @@ EXPOSE 443
 ENTRYPOINT ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
 
 
+#echo -e ":80 \\nroot * /srv/web/_site\nfile_server \n}" > /etc/caddy/Caddyfile
 #RUN echo -e "#!/bin/sh\ncaddy run --config /etc/caddy/Caddyfile" > /script.sh
 #chmod +x /script.sh; \
 #cat /script.sh
