@@ -5,7 +5,7 @@ ENV PATH $CADDY_HOME:$PATH
 
 RUN mkdir -p  /etc/caddy /srv/web; \
 chown -R  jekyll:jekyll /srv/web; \
-wget -O /etc/caddy/Caddyfile "https://github.com/jjiii/dockerfile/blob/d0aa1eeb1d201909a46cf2eb14dc5c0d173dfa6d/jekyll/Caddyfile"
+wget -O /etc/caddy/Caddyfile "https://raw.githubusercontent.com/jjiii/dockerfile/main/jekyll/Caddyfile"
 
 #RUN chown -R  jekyll:jekyll /usr/local; \
 #chown -R  jekyll:jekyll /usr/gem; \
